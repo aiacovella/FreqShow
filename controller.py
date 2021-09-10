@@ -67,9 +67,7 @@ class FreqShowController(object):
 				self.prev_center_freq = self.model.get_center_freq()
 				freq = self.prev_center_freq * 1000000.0
 				self.rtl_fm_process = subprocess.Popen(["rtl_fm", "-M", "fm", "-s", "200000", "-r", "48000", "-f", str(freq) ], stdout=subprocess.PIPE)
-
-				outfile = open('output.txt','w') #same with "w" or "a" as opening mode
-				self.aplay_process = subprocess.Popen(["aplay", "-r", "48000", "-f", "S16_LE"], stdin=self.rtl_fm_process.stdout, stdout=outfile)
+				self.aplay_process = subprocess.Popen(["aplay", "-r", "48000", "-f", "S16_LE"], stdin=self.rtl_fm_process.stdout)
 				self.demodulating = True
 			else:
 				#reopen sdr for system
