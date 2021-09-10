@@ -69,6 +69,9 @@ ui.Button.border_px    = 2
 
 
 if __name__ == '__main__':
+	rtl_fm_process = subprocess.Popen(["rtl_fm", "-M", "fm", "-s", "200000", "-r", "48000", "-f", "94100000" ], stdout=subprocess.PIPE)
+	subprocess.Popen(["aplay", "-r", "48000", "-f", "S16_LE"], stdin=rtl_fm_process.stdout)
+
 	# Initialize pygame and SDL to use the PiTFT display and touchscreen.
 	os.putenv('SDL_VIDEODRIVER', 'fbcon')
 	os.putenv('SDL_FBDEV'      , '/dev/fb1')
@@ -92,9 +95,6 @@ if __name__ == '__main__':
 	time.sleep(2.0)
 	# Main loop to process events and render current view.
 	lastclick = 0
-
-	rtl_fm_process = subprocess.Popen(["rtl_fm", "-M", "fm", "-s", "200000", "-r", "48000", "-f", "94100000" ], stdout=subprocess.PIPE)
-	subprocess.Popen(["aplay", "-r", "48000", "-f", "S16_LE"], stdin=rtl_fm_process.stdout)
 
 	while True:
 		# Process any events (only mouse events for now).
