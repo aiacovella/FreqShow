@@ -48,6 +48,10 @@ class FreqShowController(object):
 		self.change_to_instant()
 
         def demodulate(self, *args):
+			print("Closing")
+			self.model.close_sdr()
+			self.rtl_fm_process = subprocess.Popen(["rtl_fm", "-M", "fm", "-s", "200000", "-r", "48000", "-f", str(freq) ], stdout=subprocess.STDOUT)
+
             #kill the previous sub process
             # if self.rtl_fm_process is not None:
             #     self.rtl_fm_process.terminate()
@@ -68,9 +72,6 @@ class FreqShowController(object):
             #     self.model.set_center_freq(self.prev_center_freq)
             #     self.demodulating = False
 
-			print("Closing")
-		    self.model.close_sdr()
-			self.rtl_fm_process = subprocess.Popen(["rtl_fm", "-M", "fm", "-s", "200000", "-r", "48000", "-f", str(freq) ], stdout=subprocess.STDOUT)
 			# self.aplay_process = subprocess.Popen(["aplay", "-r", "48000", "-f", "S16_LE"], stdin=self.rtl_fm_process.stdout)
 
 
