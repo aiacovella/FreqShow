@@ -68,10 +68,10 @@ class FreqShowController(object):
 				self.model.set_center_freq(self.prev_center_freq)
 				self.demodulating = False
 
-		def change_view(self, view):
-			#if currently demodulating stop
-			if self.demodulating:
-				self.demodulate()
+	def change_view(self, view):
+		#if currently demodulating stop
+		if self.demodulating:
+			self.demodulate()
 
 		"""Change to specified view."""
 		self._prev_view = self._current_view
