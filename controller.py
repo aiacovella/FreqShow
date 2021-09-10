@@ -82,6 +82,10 @@ class FreqShowController(object):
 		if self.demodulating:
 			self.demodulate()
 
+	"""Change to specified view."""
+	self._prev_view = self._current_view
+	self._current_view = view
+
 	def current(self):
 		"""Return current view."""
 		return self._current_view
@@ -134,8 +138,3 @@ class FreqShowController(object):
 		# Create a new settings list view object because the setting values might
 		# change and need to be rendered with different values.
 		self.change_view(SettingsList(self.model, self))
-
-
-"""Change to specified view."""
-self._prev_view = self._current_view
-self._current_view = view
