@@ -47,11 +47,11 @@ class FreqShowController(object):
 		self._current_view = None
 		self.change_to_instant()
 
-        def demodulate(self, *args):
+		def demodulate(self, *args):
 			print("Closing")
 			self.model.close_sdr()
-		    self.prev_center_freq = self.model.get_center_freq()
-		    freq = self.prev_center_freq * 1000000.0
+			self.prev_center_freq = self.model.get_center_freq()
+			freq = self.prev_center_freq * 1000000.0
 			self.rtl_fm_process = subprocess.Popen(["rtl_fm", "-M", "fm", "-s", "200000", "-r", "48000", "-f", str(freq) ], stdout=subprocess.STDOUT)
 
 
