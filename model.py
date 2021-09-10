@@ -52,7 +52,7 @@ class FreqShowModel(object):
 
         def open_sdr(self):
             self.sdr.close()
-            time.sleep(1)
+            time.sleep(5)
             self.sdr.open()
 
 	def _clear_intensity(self):
