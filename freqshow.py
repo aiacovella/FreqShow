@@ -89,20 +89,20 @@ if __name__ == '__main__':
 	screen.blit(splash, ui.align(splash.get_rect(), (0, 0, size[0], size[1])))
 	pygame.display.update()
 	splash_start = time.time()
-	# Create model and controller.
-	fsmodel = model.FreqShowModel(size[0], size[1])
-	fscontroller = controller.FreqShowController(fsmodel)
-	time.sleep(2.0)
-	# Main loop to process events and render current view.
-	lastclick = 0
-
-	while True:
-		# Process any events (only mouse events for now).
-		for event in pygame.event.get():
-			if event.type is pygame.MOUSEBUTTONDOWN \
-				and (time.time() - lastclick) >= CLICK_DEBOUNCE:
-				lastclick = time.time()
-				fscontroller.current().click(pygame.mouse.get_pos())
-		# Update and render the current view.
-		fscontroller.current().render(screen)
-		pygame.display.update()
+	# # Create model and controller.
+	# fsmodel = model.FreqShowModel(size[0], size[1])
+	# fscontroller = controller.FreqShowController(fsmodel)
+	# time.sleep(2.0)
+	# # Main loop to process events and render current view.
+	# lastclick = 0
+	#
+	# while True:
+	# 	# Process any events (only mouse events for now).
+	# 	for event in pygame.event.get():
+	# 		if event.type is pygame.MOUSEBUTTONDOWN \
+	# 			and (time.time() - lastclick) >= CLICK_DEBOUNCE:
+	# 			lastclick = time.time()
+	# 			fscontroller.current().click(pygame.mouse.get_pos())
+	# 	# Update and render the current view.
+	# 	fscontroller.current().render(screen)
+	# 	pygame.display.update()
